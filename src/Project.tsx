@@ -16,17 +16,18 @@ interface IProjectProps {
 }
 
 export default function Project(props: IProjectProps): JSX.Element {
+
   const [toggleDetails, setToggleDetails] = useState(false);
 
-  const projectTeam: IEmployee[] = [];
-
-  const teamMembers = projectTeam.map((employee: IEmployee) => {
+  const teamMembers = props.team.map((employee: IEmployee) => {
+    return (
     <TeamDetails
+      key={employee.id}
       id={employee.id}
       avatar={employee.avatar}
       role={employee.role}
       name={employee.name}
-    />;
+    />);
   });
 
   function handleShowDetails() {
@@ -42,9 +43,12 @@ export default function Project(props: IProjectProps): JSX.Element {
       </div>
       <div className="project-body">
         <p>
-          <strong>Client ID:</strong>
+          <strong>Client ID:</strong> {props.client.id}
+        </p>   
+        <p>
+          <strong>Client Name:</strong>
         </p>
-        <Link to={`/clients/${props.client.id}`}>{props.client.id}</Link>
+        <Link to={`/clients/${props.client.id}`}>{props.client.name}</Link>
         <p>
           <strong>Start Date:</strong> {props.project.startDate}
         </p>

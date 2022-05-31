@@ -16,13 +16,16 @@ export default function HomePage(props: Iprops): JSX.Element {
 
   const aggregateRevenue = getAggregate(props.projectData);
 
+  console.log(props.projectData)
 
   const projectTiles = props.projectData.map((project) => {
+    return (
     <Project
+    key={project.project.id}
     project={project.project}
     team={project.team}
     client={project.client}
-    />
+    />)
   })
 
   function handleFilter(e: React.ChangeEvent<HTMLSelectElement>) {
