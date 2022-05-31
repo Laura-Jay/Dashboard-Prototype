@@ -38,7 +38,7 @@ export default function Project(props: IProjectProps): JSX.Element {
     <section className="project">
       <div className="project-header">
         <p>
-          <strong>ID:</strong> {props.project.id}
+          <strong>Project ID:</strong> {props.project.id}
         </p>
       </div>
       <div className="project-body">

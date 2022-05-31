@@ -2,17 +2,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./Pages/Home";
 import ClientPage from "./Pages/Client";
 import EmployeePage from "./Pages/Employee";
-// import "stylesheet.css"
 import { useEffect, useReducer, useState} from "react";
 import useAxiosFetchAll from "./APIs/useFetchAll";
 import { projectURL, employeeURL, clientURL } from "./APIs/URLs";
 import stitchData from "./utils/stitchData";
 import { IFullProjectData } from "./Interfaces";
+import "./styles/styles.css"
 
 const ACTIONS = {
   LOADING: "LOADING",
   UPDATEDATA: "UPDATEDATA",
   ERROR: "ERROR",
+  SETFULLDATA: "SETFULLDATA"
 };
 
 function App(): JSX.Element {
@@ -76,12 +77,17 @@ function App(): JSX.Element {
 useEffect(() => {
   
   if (state.projectData && state.employeeData && state.clientData){
+    console.log(state.projectData)
+    console.log(state.employeeData)
+    console.log(state.clientData)
   const fullProjectsData = stitchData(
     state.projectData,
     state.employeeData,
     state.clientData
   );
 
+
+  
   setFullData(fullProjectsData)
   }
 
